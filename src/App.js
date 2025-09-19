@@ -318,10 +318,23 @@ const Portfolio = () => {
         <div className="container mx-auto px-6 text-center z-10">
           <div className={`transition-all duration-1000 ${isVisible.home ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="mb-8">
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                 Abhinav Shrivastava
               </h1>
-              <div className="flex justify-center items-center space-x-4 mb-6">
+              <div className="relative h-10 flex justify-center items-center mb-6">
+                {titles.map((title, index) => (
+                  <p
+                    key={index}
+                    className={`absolute text-xl md:text-2xl lg:text-3xl text-gray-300 px-4 transition-opacity duration-1000 ease-in-out ${
+                      currentTitle === index ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                    }`}
+                    style={{ transitionProperty: 'opacity' }}
+                  >
+                    {title}
+                  </p>
+                ))}
+              </div>
+              <div className="flex justify-center items-center space-x-4">
                 <span className="h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent flex-1 max-w-xs"></span>
                 <p className="text-xl md:text-2xl lg:text-3xl text-gray-300 px-4">Full-Stack Developer & AI Enthusiast</p>
                 <span className="h-px bg-gradient-to-r from-transparent via-purple-400 to-transparent flex-1 max-w-xs"></span>
@@ -336,15 +349,15 @@ const Portfolio = () => {
             
             <div className="flex justify-center space-x-6 mb-8">
               <a href="https://github.com/abhinavshrivastava12" target="_blank" rel="noopener noreferrer" 
-                 className="group p-4 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all hover:scale-110">
+                  className="group p-4 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all hover:scale-110">
                 <Github size={28} className="group-hover:text-blue-400 transition-colors" />
               </a>
               <a href="https://linkedin.com/in/abhinav-shrivastava" target="_blank" rel="noopener noreferrer"
-                 className="group p-4 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all hover:scale-110">
+                  className="group p-4 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all hover:scale-110">
                 <Linkedin size={28} className="group-hover:text-blue-400 transition-colors" />
               </a>
               <a href="mailto:abhinavshrivastava182@gmail.com"
-                 className="group p-4 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all hover:scale-110">
+                  className="group p-4 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all hover:scale-110">
                 <Mail size={28} className="group-hover:text-blue-400 transition-colors" />
               </a>
             </div>
@@ -361,6 +374,13 @@ const Portfolio = () => {
                 className="px-8 py-3 border-2 border-blue-400 rounded-full font-semibold hover:bg-blue-400 hover:text-black transition-all hover:scale-105"
               >
                 Get In Touch
+              </button>
+              <button
+                onClick={downloadCV}
+                className="px-8 py-3 bg-gradient-to-r from-green-500 to-teal-500 rounded-full font-semibold hover:from-green-600 hover:to-teal-600 transition-all hover:scale-105 shadow-lg hover:shadow-green-500/25 flex items-center space-x-2"
+              >
+                <Download size={20} />
+                <span>Download CV</span>
               </button>
             </div>
           </div>
@@ -381,43 +401,54 @@ const Portfolio = () => {
               About Me
             </h2>
             
-            <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-              <div className="space-y-6">
-                <div className="prose prose-lg">
-                  <p className="text-gray-300 text-lg leading-relaxed">
-                    I'm a passionate Full-Stack Developer with expertise in the MERN stack and Java. I specialize in 
-                    creating scalable applications, building secure REST APIs, and implementing robust authentication systems. 
-                    My journey in technology is driven by curiosity and a constant desire to learn and innovate.
-                  </p>
-                  <p className="text-gray-300 text-lg leading-relaxed">
-                    Currently pursuing my Bachelor's in Information Technology at Dr. Ambedkar Institute of Technology 
-                    for Divyangjan, Kanpur. I've gained valuable industry experience through internships and have worked 
-                    on diverse projects ranging from e-commerce platforms to AI-powered computer vision systems.
-                  </p>
-                  <p className="text-gray-300 text-lg leading-relaxed">
-                    Beyond coding, I'm actively involved in college activities, including leading media teams and 
-                    participating in cultural events. I also have a passion for cricket and have represented my school 
-                    at district-level tournaments.
-                  </p>
+            <div className="grid lg:grid-cols-3 gap-12 max-w-6xl mx-auto items-center">
+            {/* Text content */}
+            <div className="lg:col-span-2 space-y-6">
+              <div className="prose prose-lg">
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  I'm a passionate Full-Stack Developer with expertise in the MERN stack and Java. I specialize in 
+                  creating scalable applications, building secure REST APIs, and implementing robust authentication systems. 
+                  My journey in technology is driven by curiosity and a constant desire to learn and innovate.
+                </p>
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  Currently pursuing my Bachelor's in Information Technology at Dr. Ambedkar Institute of Technology 
+                  for Divyangjan, Kanpur. I've gained valuable industry experience through internships and have worked 
+                  on diverse projects ranging from e-commerce platforms to AI-powered computer vision systems.
+                </p>
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  Beyond coding, I'm actively involved in college activities, including leading media teams and 
+                  participating in cultural events. I also have a passion for cricket and have represented my school 
+                  at district-level tournaments.
+                </p>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-4 pt-6">
+                <div className="flex items-center space-x-3 text-gray-400 hover:text-blue-400 transition-colors">
+                  <MapPin size={20} className="flex-shrink-0" />
+                  <span>Jhansi, U.P., India</span>
                 </div>
-                
-                <div className="grid sm:grid-cols-2 gap-4 pt-6">
-                  <div className="flex items-center space-x-3 text-gray-400 hover:text-blue-400 transition-colors">
-                    <MapPin size={20} className="flex-shrink-0" />
-                    <span>Jhansi, U.P., India</span>
-                  </div>
-                  <div className="flex items-center space-x-3 text-gray-400 hover:text-blue-400 transition-colors">
-                    <Phone size={20} className="flex-shrink-0" />
-                    <span>+91-9696400628</span>
-                  </div>
-                  <div className="flex items-center space-x-3 text-gray-400 hover:text-blue-400 transition-colors col-span-2">
-                    <Mail size={20} className="flex-shrink-0" />
-                    <span>abhinavshrivastava182@gmail.com</span>
-                  </div>
+                <div className="flex items-center space-x-3 text-gray-400 hover:text-blue-400 transition-colors">
+                  <Phone size={20} className="flex-shrink-0" />
+                  <span>+91-9696400628</span>
+                </div>
+                <div className="flex items-center space-x-3 text-gray-400 hover:text-blue-400 transition-colors col-span-2">
+                  <Mail size={20} className="flex-shrink-0" />
+                  <span>abhinavshrivastava182@gmail.com</span>
                 </div>
               </div>
-              
-              <div className="space-y-8">
+            </div>
+            {/* Image Section */}
+            <div className="flex justify-center">
+              <img
+                src="https://portfolio-image-url.com/your-photo.jpg" // FIX: Replace with your actual image URL
+                alt="Abhinav Shrivastava"
+                className="rounded-xl shadow-lg max-w-xs w-full object-cover border-4 border-blue-400"
+              />
+            </div>
+          </div>
+
+          
+          
+              <div className="space-y-8 mt-16">
                 <div className="bg-white/5 p-6 rounded-xl backdrop-blur-sm border border-white/10 hover:border-blue-400/50 transition-all">
                   <h3 className="text-2xl font-semibold text-blue-400 mb-6 flex items-center">
                     <BookOpen className="mr-3" size={24} />
@@ -466,7 +497,6 @@ const Portfolio = () => {
               </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* Skills Section */}
