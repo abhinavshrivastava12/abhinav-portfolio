@@ -439,7 +439,7 @@ const Portfolio = () => {
             {/* Image Section */}
             <div className="flex justify-center">
               <img
-                src="https://portfolio-image-url.com/your-photo.jpg" // FIX: Replace with your actual image URL
+                src="https://drive.google.com/file/d/1EZ24FmwAFvKMzuIymBafmxPepRloVwMS/view?usp=drive_link" // FIX: Replace with your actual image URL
                 alt="Abhinav Shrivastava"
                 className="rounded-xl shadow-lg max-w-xs w-full object-cover border-4 border-blue-400"
               />
@@ -478,7 +478,7 @@ const Portfolio = () => {
                   <div className="grid grid-cols-2 gap-4">
                     <div className="text-center">
                       <div className="text-2xl font-bold text-blue-400">3+</div>
-                      <div className="text-sm text-gray-400">Years Experience</div>
+                      <div className="text-sm text-gray-400">Months Experience as an Intern</div>
                     </div>
                     <div className="text-center">
                       <div className="text-2xl font-bold text-green-400">6+</div>
