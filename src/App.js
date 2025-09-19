@@ -137,7 +137,7 @@ const Portfolio = () => {
       subtitle: 'AI-Powered Safety Solution',
       description: 'An advanced computer vision system using YOLOv8 for real-time helmet detection, achieving 91% accuracy on custom datasets. Features GPU-accelerated training and real-time inference pipeline.',
       tech: ['Python', 'YOLOv8', 'OpenCV', 'PyTorch', 'Google Colab', 'NumPy'],
-      github: '#',
+      github: 'https://github.com/abhinavshrivastava12/Helmet_Detection_System',
       demo: '#',
       period: 'Sep 2024 – Present',
       status: 'In Development',
