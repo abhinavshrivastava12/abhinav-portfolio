@@ -33,11 +33,29 @@ const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState({});
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [currentTitle, setCurrentTitle] = useState(0);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   });
+
+  // Rotating titles with smooth animation
+  const titles = [
+    'Full-Stack Developer',
+    'Software Developer', 
+    'UI/UX Designer',
+    'AI Enthusiast',
+    'MERN Stack Developer'
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTitle((prev) => (prev + 1) % titles.length);
+    }, 3000); // Change every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -90,10 +108,16 @@ const Portfolio = () => {
       { name: 'MySQL', level: 75, color: 'from-blue-600 to-indigo-600' }
     ],
     tools: [
-      { name: 'Git/GitHub', level: 90, color: 'from-gray-700 to-black' },
-      { name: 'VSCode', level: 95, color: 'from-blue-500 to-blue-700' },
-      { name: 'Postman', level: 85, color: 'from-orange-500 to-red-500' },
-      { name: 'Cloudinary', level: 80, color: 'from-purple-500 to-pink-500' }
+      { name: 'Git', level: 90, color: 'from-orange-500 to-red-500' },
+      { name: 'GitHub', level: 90, color: 'from-gray-700 to-black' },
+      { name: 'VS Code', level: 95, color: 'from-blue-500 to-blue-700' },
+      { name: 'Postman', level: 85, color: 'from-orange-400 to-red-500' },
+      { name: 'Compass', level: 80, color: 'from-green-500 to-green-700' },
+      { name: 'Vercel', level: 85, color: 'from-black to-gray-800' },
+      { name: 'Netlify', level: 80, color: 'from-teal-500 to-cyan-500' },
+      { name: 'Render', level: 75, color: 'from-purple-500 to-pink-500' },
+      { name: 'Agora', level: 70, color: 'from-indigo-500 to-purple-500' },
+      { name: 'Clerk', level: 75, color: 'from-violet-500 to-purple-600' }
     ]
   };
 
@@ -102,7 +126,7 @@ const Portfolio = () => {
       title: 'Global Connect',
       subtitle: 'Professional Networking Platform',
       description: 'A comprehensive LinkedIn-like platform featuring user profiles, job postings, real-time peer-to-peer messaging, and live audio/video calls. Built during my internship with advanced AI integration for enhanced user experience.',
-      tech: ['React', 'Node.js', 'MongoDB', 'JWT', 'Tailwind CSS', 'Agora SDK', 'Socket.io'],
+      tech: ['React', 'Node.js', 'MongoDB', 'JWT', 'Tailwind CSS', 'Agora SDK', 'Socket.io', 'Clerk'],
       github: 'https://github.com/abhinavshrivastava12/professional-networking-platform',
       demo: '#',
       period: 'Apr 2025 – Jul 2025',
@@ -228,17 +252,21 @@ const Portfolio = () => {
     setFormData({ name: '', email: '', message: '' });
   };
 
+  const downloadCV = () => {
+    window.open('https://drive.google.com/file/d/1XPVmIT8id7gzd_ffV1Z81rG3LewYlDXs/view?usp=drive_link', '_blank');
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-x-hidden">
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-black/20 backdrop-blur-lg border-b border-white/10">
-        <div className="container mx-auto px-6 py-4">
+        <div className="container mx-auto px-4 sm:px-6 py-4">
           <div className="flex justify-between items-center">
-            <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            <div className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               Abhinav Shrivastava
             </div>
             
-            <div className="hidden md:flex space-x-8">
+            <div className="hidden md:flex space-x-6 lg:space-x-8">
               {['home', 'about', 'skills', 'projects', 'experience', 'contact'].map((item) => (
                 <button
                   key={item}
